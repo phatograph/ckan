@@ -1,0 +1,159 @@
+{% ckan_extends %}
+
+{% block extras %}
+  {% if pkg_dict.oneline %}
+      <tr>
+            <th scope="row" class="dataset-label">{{ _("One line description") }}</th>
+                  <td class="dataset-details">{{ pkg_dict.oneline }}</td>
+                      </tr>
+  {% endif %}
+  {% if pkg_dict.releasedate %}
+     <tr>
+            <th scope="row" class="dataset-label">{{ _("Date when measurement started") }}</th>
+                  <td class="dataset-details">{{ pkg_dict.releasedate }}</td>
+                      </tr>
+  {% endif %}
+  {% if pkg_dict.menddate %}
+    <tr>
+            <th scope="row" class="dataset-label">{{ _("Date when measurement ended") }}</th>
+                  <td class="dataset-details">{{ pkg_dict.menddate }}</td>
+                      </tr>
+  {% endif %}
+  {% if pkg_dict.journaldoi %}
+    <tr>
+            <th scope="row" class="dataset-label">{{ _("URL of related work in CiteULike") }}</th>
+                  <td class="dataset-details"><a href="{{ pkg_dict.journaldoi }}" target="_blank">CiteULike</a></td>
+                      </tr>
+  {% endif %}
+  {% if pkg_dict.journalbibtex %}
+      <tr>
+        <th scope="row" class="dataset-label">{{ _("Canonical publication reference, in BibTeX") }}</th>
+        <td class="dataset-details">
+          <a href="#" data-toggle="modal" data-target="#journalbibtexmodal">BibTeX</a>
+          <div class="modal fade" id="journalbibtexmodal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">BibTeX</h4>
+                </div>
+                <div class="modal-body">
+                  <div style="white-space: pre; max-height: 200px;">{{ pkg_dict.journalbibtex }}</div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+  {% endif %}
+  {% if pkg_dict.network %}
+     <tr>
+            <th scope="row" class="dataset-label">{{ _("Measurement Purposes") }}</th>
+                  <td class="dataset-details">{{ pkg_dict.measpurposes }}</td>
+                      </tr>
+  {% endif %}
+  {% if pkg_dict.environment %}
+     <tr>
+            <th scope="row" class="dataset-label">{{ _("Non-technical description of the dataset") }}</th>
+                 <td class="dataset-details">{{ pkg_dict.environment }}</td>
+                      </tr>
+  {% endif %}
+  {% if pkg_dict.network %}
+     <tr>
+            <th scope="row" class="dataset-label">{{ _("Network configuration ") }}</th>
+                 <td class="dataset-details">{{ pkg_dict.network }}</td>
+                      </tr>
+  {% endif %}
+  {% if pkg_dict.collection %}
+     <tr>
+            <th scope="row" class="dataset-label">{{ _("Collection methodology") }}</th>
+                 <td class="dataset-details">{{ pkg_dict.collection }}</td>
+                      </tr>
+ {% endif %}
+ {% if pkg_dict.sanitization %}
+    <tr>
+           <th scope="row" class="dataset-label">{{ _("Sanitization") }}</th>
+                 <td class="dataset-details">{{ pkg_dict.sanitization }}</td>
+                      </tr>
+ {% endif %}
+ {% if pkg_dict.hole %}
+    <tr>
+           <th scope="row" class="dataset-label">{{ _("Missing data due to system failures or configuration mistake") }}</th>
+                 <td class="dataset-details">{{ pkg_dict.hole }}</td>
+                      </tr>
+ {% endif %}
+ {% if pkg_dict.error %}
+    <tr>
+           <th scope="row" class="dataset-label">{{ _("Incorrectly measure data") }}</th>
+                 <td class="dataset-details">{{ pkg_dict.error }}</td>
+                      </tr>
+ {% endif %}
+ {% if pkg_dict.limitation %}
+    <tr>
+          <th scope="row" class="dataset-label">{{ _("Methodlogy limitation") }}</th>
+                 <td class="dataset-details">{{ pkg_dict.limitation }}</td>
+                      </tr>
+ {% endif %}
+ {% if pkg_dict.note %}
+    <tr>
+          <th scope="row" class="dataset-label">{{ _("Note") }}</th>
+                <td class="dataset-details">{{ pkg_dict.note }}</td>
+                      </tr>
+ {% endif %}
+ <tr>
+ <th>How to Cite this dataset</th>
+ </tr>
+ {% if pkg_dict.datasetbibtex %}
+    <tr>
+          <th scope="row" class="dataset-label">{{ _("Dataset bibliographic information, in BibTeX") }}</th>
+        <td class="dataset-details">
+          <a href="#" data-toggle="modal" data-target="#datasetbibtexmodal">Cite dataset using BibTeX</a>
+          <div class="modal fade" id="datasetbibtexmodal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">BibTeX</h4>
+                </div>
+                <div class="modal-body">
+                  <div style="white-space: pre; max-height: 200px;">{{ pkg_dict.datasetbibtex }}</div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+                      </tr>
+ {% endif %}
+ {% if pkg_dict.datasetris %}
+    <tr>
+         <th scope="row" class="dataset-label">{{ _("Dataset bibliographic formation, in RIS") }}</th>
+        <td class="dataset-details">
+          <a href="#" data-toggle="modal" data-target="#datasetrismodal">Cite dataset using RIS</a>
+          <div class="modal fade" id="datasetrismodal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">RIS</h4>
+                </div>
+                <div class="modal-body">
+                  <div style="white-space: pre; max-height: 200px;">{{ pkg_dict.datasetris }}</div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+                
+                      </tr>
+ {% endif %}
+
+{% endblock %}

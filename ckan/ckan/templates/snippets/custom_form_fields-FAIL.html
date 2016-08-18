@@ -1,0 +1,25 @@
+{#
+Adds a block of custom form fields.
+
+extras - The fields to add.
+errors - A dict of errors for the fields.
+limit  - The total number of fields that should be output.
+Example:
+
+  {% snippet 'snippets/custom_form_fields.html', extras=data.extras, errors=errors, limit=10 %}
+
+#}
+{% import "macros/form.html" as form %}
+
+<div data-module="custom-fields">
+
+
+    {{ form.custom(
+      names=('key', 'value', 'deleted'),
+      id='field-extras',
+      label=_('Custom Field'),
+      values=(extra.key, extra.value, extra.deleted),
+      error=errors['key'] or errors['value']
+    ) }}
+
+</div>

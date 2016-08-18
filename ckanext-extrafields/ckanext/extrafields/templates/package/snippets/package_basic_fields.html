@@ -1,0 +1,34 @@
+{% ckan_extends %}
+
+{% block package_basic_fields_custom %}
+  {{ form.input('oneline', label=_('One line description of this entry'), id='field-oneline', placeholder=_('one line description'), value=data.oneline, error=errors.oneline, classes=['control-full']) }}
+  {{ form.input('releasedate', label=_('Date when measurement started'), id='field-releasedate', placeholder=_('Year-Month-Date'), value=data.releasedate, error=errors.releasedate, classes=['control-full']) }}
+
+  {{ form.input('menddate', label=_('Date when measurement ended'), id='field-menddate', placeholder=_('Year-Month-Date'), value=data.menddate, error=errors.menddate, classes=['control-full']) }}
+
+  {{ form.input('journaldoi', label=_('DOI of the related work'), id='field-journaldoi', placeholder=_('doi:10.10.1038/nphys1170'), value=data.journaldoi, error=errors.journaldoi, classes=['control-full']) }}
+  {#{ form.markdown('references', id='field-references', label=_('Canonical publication reference, in BibTeX'), placeholder=_(''), value=data.references, error=errors.references, classes=['control-full']) }#}
+
+  {{ form.markdown('journalbibtex', id='field-jounalbibtex', label=_('Canonical publication reference, in BibTeX'), placeholder=_('BibTex of your paper that best describe of your dataset'), value=data.journalbibtex, error=errors.journalbibtex, classes=['control-full']) }}
+
+  {#{ form.checkbox('keyword', checked=true) }#}
+
+  {% set tag_attrs = {'data-module': 'autocomplete', 'data-module-tags': '', 'data-module-source': '/api/2/util/tag/autocomplete?incomplete=?'} %}
+  {#{ form.input('keyword', id='field-keyword', label=_('Keywords for this dataset'), placeholder=_('eg. 802.11, Bluetooth, GPS'), value=data.keyword, error=errors.keyword, classes=['control-full'], attrs=tag_attrs) }#}
+  {{ form.input('measpurposes', id='field-measpurposes', label=_('Measurement purposes'), placeholder=_('eg. Network Diagonosis, Bit Error Characterization, Education Use'), value=data.measpurposes, error=errors.measpurposes, classes=['control-full'], attrs=tag_attrs) }}
+  {{ form.input('networktype', id='field-networktype', label=_('Network type'), placeholder=_('eg. CSMA MAC, sensor network, 8.02.11 ad-hoc'), value=data.networktype, error=errors.networktype, classes=['control-full'], attrs=tag_attrs) }}
+  {{ form.markdown('environment', id='field-environment', label=_('Non-technical description of the dataset'), placeholder=_(''), value=data.environment, error=errors.environment, classes=['control-full']) }}
+  {{ form.markdown('network', id='field-network', label=_('Network configuration'), placeholder=_(''), value=data.network, error=errors.network, classes=['control-full']) }}
+  {{ form.markdown('collection', id='field-collection', label=_('Collection methodology'), placeholder=_(''), value=data.collection, error=errors.collection, classes=['control-full']) }}
+  {{ form.markdown('sanitization', id='field-sanitization', label=_('Sanitization'), placeholder=_(''), value=data.sanitization, error=errors.sanitization, classes=['control-full']) }}
+  {{ form.markdown('hole', id='field-hole', label=_('Missing data due to system failures or configuration mistake'), placeholder=_(''), value=data.hole, error=errors.hole, classes=['control-full']) }}
+  {{ form.markdown('error', id='field-error', label=_('Incorrectly measure data'), placeholder=_(''), value=data.error, error=errors.error, classes=['control-full']) }}
+  {{ form.markdown('limitation', id='field-limitation', label=_('Methodlogy limitation'), placeholder=_(''), value=data.limitation, error=errors.limitation, classes=['control-full']) }}
+  {{ form.markdown('note', id='field-note', label=_('Note'), placeholder=_(''), value=data.note, error=errors.note, classes=['control-full']) }}
+  {#% set is_upload = (data.url_type == 'upload')%#}
+  {#{ form.image_upload(data, errors, field_url='license', field_upload='upload', is_upload_enabled=true, upload_label=_('Data License Agreement')) }#}
+
+  {{ form.markdown('datasetbibtex', id='field-datasetbibtex', label=_('Dataset bibliographic information, in BibTeX'), placeholder=_('BibTex of your dataset'), value=data.datasetbibtex, error=errors.datasetbibtex, classes=['control-full']) }}
+  {{ form.markdown('datasetris', id='field-datasetris', label=_('Dataset bibliographic information, in RIS'), placeholder=_('RIS of your dataset'), value=data.datasetris, error=errors.datasetris, classes=['control-full']) }}
+{% endblock %}
+
